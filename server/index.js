@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Hello, Express!");
 });
 
-app.post("/api/usercommands", async (req, res) => {
+app.post("/usercommands", async (req, res) => {
   const token = req.body.token;
   const uid = req.body.uid;
   const url = `https://discord.com/api/v8/applications/${uid}/commands`;
@@ -31,5 +31,5 @@ app.post("/api/usercommands", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is up and ready: listening at https://localhost:${port}`);
+  console.log(`Server is up and ready: listening at http://localhost:${port}`);
 });

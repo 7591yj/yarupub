@@ -1,3 +1,19 @@
+.submit,
+button {
+  background-color: #738adb;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 16px;
+}
+
+.submit:hover,
+button:hover {
+  background-color: #4752c4;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +30,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #36393f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

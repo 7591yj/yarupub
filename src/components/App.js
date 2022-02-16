@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AppRouter from "./Router";
+import "../css/App.css";
 
 const App = () => {
   const [botInfo, setBotInfo] = useState(null);

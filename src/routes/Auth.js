@@ -38,7 +38,7 @@ const Auth = ({ Login }) => {
           placeholder="Your bot user ID goes here"
         />
         <p>Ready to move on?</p>
-        <input type="submit" value="Let's go!" />
+        <input className="submit" type="submit" value="Let's go!" />
       </form>
     </div>
   );

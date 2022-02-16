@@ -1,23 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+import Interactions from "../components/Interactions";
 
 const Home = ({ botInfo }) => {
-  const getCommands = async () => {
-    const params = new URLSearchParams();
-    params.append("token", botInfo.token);
-    params.append("uid", botInfo.uid);
-    await axios
-      .post("/api/usercommands", params)
-      .then(console.log)
-      .catch(console.error);
-  };
-
-  return (
-    <div>
-      <h1>Hello</h1>
-      <button onClick={getCommands}>GET</button>
-    </div>
-  );
+  return <Interactions botInfo={botInfo} />;
 };
 
 export default Home;
