@@ -16,17 +16,56 @@ app.get("/", (req, res) => {
   res.send("Hello, Express!");
 });
 
-app.post("/usercommands", async (req, res) => {
+app.post("/commands/get", async (req, res) => {
   const token = req.body.token;
   const uid = req.body.uid;
   const url = `https://discord.com/api/v8/applications/${uid}/commands`;
-  const response = await axios.get(url, {
+  await axios
+    .get(url, {
+      headers: {
+        Authorization: `Bot ${token}`,
+      },
+    })
+    .then((response) => {
+      console.log("API was called: get commands");
+      res.json(response.data);
+    })
+    .catch((error) => {
+      console.log("ERR: get commands, status: ", error.response.status);
+      if (error.response.status === 401) res.json({ status: 401 });
+    });
+});
+
+app.post("/commands/create", async (req, res) => {});
+
+app.post("/commands/delete", async (req, res) => {
+  const token = req.body.token;
+  const uid = req.body.uid;
+  const command = req.body.commandId;
+  const url = `https://discord.com/api/v8/applications/${uid}/commands/${command}`;
+  const response = await axios.delete(url, {
     headers: {
       Authorization: `Bot ${token}`,
     },
   });
 
-  console.log("API was called: userCommands");
+  console.log("API was called: delete command");
+  res.json(response.data);
+});
+
+app.post("/commands/edit", async (req, res) => {
+  const token = req.body.token;
+  const uid = req.body.uid;
+  const command = req.body.commandId;
+  const options = req.body.options;
+  const url = `https://discord.com/api/v8/applications/${uid}/commands/${command}`;
+  const response = await axios.patch(url, options, {
+    headers: {
+      Authorization: `Bot ${token}`,
+    },
+  });
+
+  console.log("API was called: edit command");
   res.json(response.data);
 });
 
